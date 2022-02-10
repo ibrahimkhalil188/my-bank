@@ -13,6 +13,16 @@ document.getElementById("deposit-button").addEventListener('click', function () 
 
     previousDeposit.innerText = newDepositAmont;
 
+    // update balance
+
+    const balance = document.getElementById("balance");
+
+    const previousBalance = balance.innerText;
+
+    const newbalance = parseFloat(previousBalance) + parseFloat(depositInput)
+
+    balance.innerText = newbalance;
+
     depositInputField.value = ""
 
 })
