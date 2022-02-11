@@ -1,34 +1,42 @@
-document.getElementById("deposit-button").addEventListener('click', function () {
-
+function getInput(inputIdName) {
     const depositInputField = document.getElementById("deposit-input");
 
     const depositInput = depositInputField.value;
-    if (depositInputField.value <= 0) {
-        alert("Only positive amount accepted")
-    }
 
-    else {
-        const previousDeposit = document.getElementById("previous-deposit")
+    const depositInputValue = parseFloat(depositInput)
 
-        const previousDepositAmount = previousDeposit.innerText
+    depositInputField.value = ""
 
-        const newDepositAmont = parseFloat(previousDepositAmount) + parseFloat(depositInput)
+    return depositInputValue;
+}
 
-        previousDeposit.innerText = newDepositAmont;
 
-        // update balance
+document.getElementById("deposit-button").addEventListener('click', function () {
 
-        const balance = document.getElementById("balance");
+    const depositInputValue = getInput()
 
-        const previousBalance = balance.innerText;
+    const previousDeposit = document.getElementById("previous-deposit")
 
-        const newbalance = parseFloat(previousBalance) + parseFloat(depositInput)
+    const previousDepositAmount = previousDeposit.innerText
 
-        balance.innerText = newbalance;
 
-        depositInputField.value = ""
+    const newDepositAmont = parseFloat(previousDepositAmount) + depositInputValue
 
-    }
+    previousDeposit.innerText = newDepositAmont;
+
+    // update balance
+
+    const balance = document.getElementById("balance");
+
+    const previousBalance = balance.innerText;
+
+    const newbalance = parseFloat(previousBalance) + depositInputValue
+
+    balance.innerText = newbalance;
+
+
+
+
 })
 
 document.getElementById("withdraw-button").addEventListener('click', function () {
