@@ -11,13 +11,31 @@ function getInput(inputIdName) {
 }
 
 function updateTotal(inputId, depositInputValue) {
-    debugger
     const previousDeposit = document.getElementById(inputId);
     const previousDepositText = previousDeposit.innerText;
     const previousDepositAmout = parseFloat(previousDepositText)
 
 
     previousDeposit.innerText = depositInputValue + previousDepositAmout;
+}
+
+// update balance
+
+function updateBalance(depositInputValue, toAdd) {
+    const balance = document.getElementById("balance");
+
+    const previousBalance = balance.innerText;
+    if (toAdd == true) {
+        const newbalance = parseFloat(previousBalance) + depositInputValue
+        balance.innerText = newbalance;
+    } else {
+        const newbalance = parseFloat(previousBalance) - depositInputValue
+        balance.innerText = newbalance;
+    }
+
+
+
+
 }
 
 // deposit section 
@@ -27,6 +45,8 @@ document.getElementById("deposit-button").addEventListener('click', function () 
     const depositInputValue = getInput("deposit-input")
 
     updateTotal("previous-deposit", depositInputValue)
+
+    updateBalance(depositInputValue, true)
     /* const previousDeposit = document.getElementById("previous-deposit");
     const previousDepositText = previousDeposit.innerText;
     const previousDepositAmout = parseFloat(previousDepositText)
@@ -36,14 +56,14 @@ document.getElementById("deposit-button").addEventListener('click', function () 
 
     // update balance
 
-    const balance = document.getElementById("balance");
+    /* const balance = document.getElementById("balance");
 
     const previousBalance = balance.innerText;
 
     const newbalance = parseFloat(previousBalance) + depositInputValue
 
     balance.innerText = newbalance;
-
+ */
 
 
 
@@ -63,6 +83,8 @@ document.getElementById("withdraw-button").addEventListener('click', function ()
 
     updateTotal("previous-withdraw", withdrawInputAmount)
 
+    updateBalance(withdrawInputAmount, false)
+
     /* const previousWithdraw = document.getElementById("previous-withdraw");
 
     const previousWithdrawText = previousWithdraw.innerText;
@@ -72,13 +94,13 @@ document.getElementById("withdraw-button").addEventListener('click', function ()
 
     // update balance
 
-    const balance = document.getElementById("balance");
+    /* const balance = document.getElementById("balance");
 
     const previousBalance = balance.innerText;
 
     const newBalaceAfterWithdraw = parseFloat(previousBalance) - parseFloat(withdrawInputAmount)
 
-    balance.innerText = newBalaceAfterWithdraw;
+    balance.innerText = newBalaceAfterWithdraw; */
 
     /* withdrawInputField.value = '' */
 
