@@ -1,5 +1,5 @@
 function getInput(inputIdName) {
-    const depositInputField = document.getElementById("deposit-input");
+    const depositInputField = document.getElementById(inputIdName);
 
     const depositInput = depositInputField.value;
 
@@ -10,10 +10,11 @@ function getInput(inputIdName) {
     return depositInputValue;
 }
 
+// deposit section 
 
 document.getElementById("deposit-button").addEventListener('click', function () {
 
-    const depositInputValue = getInput()
+    const depositInputValue = getInput("deposit-input")
 
     const previousDeposit = document.getElementById("previous-deposit")
 
@@ -39,11 +40,14 @@ document.getElementById("deposit-button").addEventListener('click', function () 
 
 })
 
+// Withdraw section
+
 document.getElementById("withdraw-button").addEventListener('click', function () {
 
     const withdrawInputField = document.getElementById("withdraw-input");
 
-    const withdrawInputAmount = withdrawInputField.value;
+    const withdrawInput = withdrawInputField.value;
+    const withdrawInputAmount = parseFloat(withdrawInput)
 
     const previousWithdraw = document.getElementById("previous-withdraw");
 
