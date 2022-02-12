@@ -10,18 +10,29 @@ function getInput(inputIdName) {
     return depositInputValue;
 }
 
+function updateTotal(inputId, depositInputValue) {
+    debugger
+    const previousDeposit = document.getElementById(inputId);
+    const previousDepositText = previousDeposit.innerText;
+    const previousDepositAmout = parseFloat(previousDepositText)
+
+
+    previousDeposit.innerText = depositInputValue + previousDepositAmout;
+}
+
 // deposit section 
 
 document.getElementById("deposit-button").addEventListener('click', function () {
 
     const depositInputValue = getInput("deposit-input")
 
-    const previousDeposit = document.getElementById("previous-deposit");
+    updateTotal("previous-deposit", depositInputValue)
+    /* const previousDeposit = document.getElementById("previous-deposit");
     const previousDepositText = previousDeposit.innerText;
     const previousDepositAmout = parseFloat(previousDepositText)
 
 
-    previousDeposit.innerText = depositInputValue + previousDepositAmout;
+    previousDeposit.innerText = depositInputValue + previousDepositAmout; */
 
     // update balance
 
@@ -50,12 +61,14 @@ document.getElementById("withdraw-button").addEventListener('click', function ()
 
     const withdrawInputAmount = getInput("withdraw-input")
 
-    const previousWithdraw = document.getElementById("previous-withdraw");
+    updateTotal("previous-withdraw", withdrawInputAmount)
+
+    /* const previousWithdraw = document.getElementById("previous-withdraw");
 
     const previousWithdrawText = previousWithdraw.innerText;
     const previousWithdrawAmout = parseFloat(previousWithdrawText)
 
-    previousWithdraw.innerText = withdrawInputAmount + previousWithdrawAmout;
+    previousWithdraw.innerText = withdrawInputAmount + previousWithdrawAmout; */
 
     // update balance
 
