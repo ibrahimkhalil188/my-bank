@@ -16,14 +16,12 @@ document.getElementById("deposit-button").addEventListener('click', function () 
 
     const depositInputValue = getInput("deposit-input")
 
-    const previousDeposit = document.getElementById("previous-deposit")
+    const previousDeposit = document.getElementById("previous-deposit");
+    const previousDepositText = previousDeposit.innerText;
+    const previousDepositAmout = parseFloat(previousDepositText)
 
-    const previousDepositAmount = previousDeposit.innerText
 
-
-    const newDepositAmont = parseFloat(previousDepositAmount) + depositInputValue
-
-    previousDeposit.innerText = newDepositAmont;
+    previousDeposit.innerText = depositInputValue + previousDepositAmout;
 
     // update balance
 
@@ -44,18 +42,20 @@ document.getElementById("deposit-button").addEventListener('click', function () 
 
 document.getElementById("withdraw-button").addEventListener('click', function () {
 
-    const withdrawInputField = document.getElementById("withdraw-input");
+    /* const withdrawInputField = document.getElementById("withdraw-input");
+ 
+     const withdrawInput = withdrawInputField.value;
+ 
+     const withdrawInputAmount = parseFloat(withdrawInput) */
 
-    const withdrawInput = withdrawInputField.value;
-    const withdrawInputAmount = parseFloat(withdrawInput)
+    const withdrawInputAmount = getInput("withdraw-input")
 
     const previousWithdraw = document.getElementById("previous-withdraw");
 
-    const previousWithdrawAmout = previousWithdraw.innerText;
+    const previousWithdrawText = previousWithdraw.innerText;
+    const previousWithdrawAmout = parseFloat(previousWithdrawText)
 
-    const newWithdrawAmount = parseFloat(withdrawInputAmount) + parseFloat(previousWithdrawAmout)
-
-    previousWithdraw.innerText = newWithdrawAmount;
+    previousWithdraw.innerText = withdrawInputAmount + previousWithdrawAmout;
 
     // update balance
 
@@ -67,6 +67,6 @@ document.getElementById("withdraw-button").addEventListener('click', function ()
 
     balance.innerText = newBalaceAfterWithdraw;
 
-    withdrawInputField.value = ''
+    /* withdrawInputField.value = '' */
 
 })
